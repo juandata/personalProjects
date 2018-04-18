@@ -1,0 +1,4 @@
+npm init
+npm install -g express
+
+para ejecutar la aplicación: node app.js
