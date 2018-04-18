@@ -1,0 +1,11 @@
+URL: https://www.w3schools.com/nodejs/nodejs_mongodb.asp
+
+1. Se puede crear una base de datos desde nodejs en mongo. Para esto es necesario crear un objeto mongodb y utilizar
+sus métodos.
+
+Métodos importantes:
+connect();
+createCollection();
+collection();
+insertOne();
+insertMany();
