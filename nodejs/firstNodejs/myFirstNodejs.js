@@ -5,7 +5,7 @@ var fs = require("fs");
 
 http.createServer(function(req, res){
 
-  fs.readFile("./demoFile.html", function(err, data) {
+  fs.readFile("NodejsTutorial/html/index.html", function(err, data) {
     res.writeHead(200, {"Content-Type": "text/html"});
     res.write(data);
     fs.appendFile('mynewfile1.txt', 'Creado por Node.js! ', function (err) {

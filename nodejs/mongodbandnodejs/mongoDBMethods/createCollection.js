@@ -7,7 +7,7 @@ var url = "mongodb://localhost:27017/";
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
   var dbo = db.db("db1");
-  dbo.createCollection("coleccionCreadaDesdeNode", function(err, res) { //se usa el método createCollection
+  dbo.createCollection("products", function(err, res) { //se usa el método createCollection
     if (err) throw err;
     console.log("Collection created!");
     db.close();

@@ -5,7 +5,7 @@ sus métodos.
 2.En windows a veces es necesario ejecutar el servidor mongodb desde la línea de comandos de windows y no desde bash.
 También es necesario instalar mongodb como dependencia en un package.json. No olvidar también agregar un directorio;
 data / db /
-en el disco c. Es allí donde se guardarán las bases de datos. 
+en el disco c. Es allí donde se guardarán las bases de datos.
 
 Métodos importantes:
 connect();
@@ -13,3 +13,5 @@ createCollection();
 collection();
 insertOne();
 insertMany();
+findOne();
+find();
