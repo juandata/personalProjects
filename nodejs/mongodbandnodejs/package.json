@@ -1,0 +1,14 @@
+{
+  "name": "mongodbnodejs",
+  "version": "1.0.0",
+  "description": "This is a practice project using mongodb and nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Juan David Tabares Arce",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^3.0.7"
+  }
+}
