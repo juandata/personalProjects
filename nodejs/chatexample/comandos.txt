@@ -19,3 +19,7 @@ Hello, and welcome to the npm adventure workshop!  I am going to be
      `how-to-npm verify skip` to skip it.)
 
 2. Instalar la última versión de node: npm install npm -g
+
+11. Toda paquete que se publica en npm tiene una entrada dist-tags qué mapea a un string como "latest" o números de versión como "1.2.48".
+  Para añadir una versión tag: npm dist-tag add <pkg>@version [<tag>] (npm dist-tag add chat-example@1.0.0 beta)
+  Saber qué versión estoy usando npm ls (la primera línea)
