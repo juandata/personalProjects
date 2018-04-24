@@ -145,3 +145,49 @@ server.listen(Number(process.argv[2], () => {console.log('server bound', server.
  });
  server.listen(Number(process.argv[2]), () => {console.log("Server listening on http://localhost:", process.argv[2] )});
 */
+
+//learnyounode select 11: HTTP UPPERCASERER
+//create SERVER
+/*
+var http = require('http'), map = require('through2-map');
+var server = http.createServer(function (req, res){
+
+  if(req.method !== 'POST'){
+    return res.end('Please send a POST method request.');
+  }
+  req.pipe(map(function (chunk){
+    return chunk.toString().toUpperCase()
+  })).pipe(res);
+});
+
+server.listen(Number(process.argv[2]), () => {
+  console.log("Server listening on http://localhost:", process.argv[2]);
+});
+*/
+
+// HTTP JSON API SERVER (Exercise 13 of 13)
+var http = require('http'), url = require('url');
+var server = http.createServer(function (req, res){
+  console.log("connected in the url:", req.url);
+  if(req.method !== 'GET'){
+    return res.end('Please send a GET method request.');
+  };
+  var jsonData = {
+    name : "Juan", lastName : "Tabares"
+  };
+  var fecha = new Date().toISOString();
+  var urlObject = url.parse(req.url, true);
+  var stringISO = urlObject.query.iso;
+  var regExpr = /T/i;
+  var hour = stringISO.split(regExpr);
+  console.log( hour);
+  res.writeHead(200, {'Content-Type': 'application/json'})
+  res.write(JSON.stringify(jsonData));
+  res.write(fecha);
+
+});
+
+
+server.listen(Number(process.argv[2]), () => {
+  console.log("Server listening on http://localhost:", process.argv[2]);
+});
