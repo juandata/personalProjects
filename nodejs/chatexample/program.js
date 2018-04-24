@@ -54,10 +54,80 @@ var fs = require('fs');
 */
 
 //  learnyounode select 6: HTTP CLIENT
-
+/*
 var http = require('http')
     http.get(process.argv[2], function (response) {
       response.setEncoding('utf8')
       response.on('data', console.log)
       response.on('error', console.error)
+    });*/
+
+    //HTTP COLLECT (Exercise 8 of 13)
+    /*
+var http = require('http'), BufferList = require('bl'), url = process.argv[2];
+
+http.get(url, function(response) {
+  response.pipe(BufferList(function (err, data) {
+    if(err) throw err;
+    console.log(data.length);
+    console.log(data.toString());
+  }))
+});*/
+
+ //JUGGLING ASYNC (Exercise 9 of 13)
+/*
+var http = require('http'), BufferList = require('bl'), results = [], count = 0;
+
+function printResults(){
+  for (var i = 0; i < 3; i ++){
+    console.log(results[i]);
+  }
+}
+function httpGet(index ) {
+http.get(process.argv[2 + index], function(response) {
+
+  response.pipe(BufferList(function (err, data) {
+    if(err) throw err;
+
+      results[index] = data.toString();
+      count ++;
+      if(count === 3) {
+        printResults();
+      }
+  }))
+});
+}
+for (var i = 0; i < 3; i ++){
+  httpGet(i);
+}
+*/
+
+//## TIME SERVER (Exercise 10 of 13)
+/*
+var net = require('net');
+function zeroFill(i) {
+    return (i < 10 ? '0' : '') + i;
+}
+
+function now() {
+    var d = new Date();
+    return d.getFullYear() + '-'
+      + zeroFill(d.getMonth() + 1) + '-'
+      + zeroFill(d.getDate()) + ' '
+      + zeroFill(d.getHours()) + ':'
+      + zeroFill(d.getMinutes());
+}
+
+var server = net.createServer(function(socket) {
+    console.log("connected");
+
+    socket.on('close', () => {
+      console.log('closed');
     });
+    socket.on('error', (err) => {
+      throw err;
+    });
+    socket.end(now() + '\n');
+});
+server.listen(Number(process.argv[2], () => {console.log('server bound', server.address())}));
+*/
