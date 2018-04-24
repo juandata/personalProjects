@@ -2,15 +2,19 @@
 //console.log("HELLO WORLD");
 
 //learnyounode select 1: BABY STEPS
-//console.log( +process.argv[2][0] + +process.argv[2][1] + +process.argv[2][2] );
-
+/*
+var res = 0;
+for(var i = 2;  i < process.argv.length; i ++ ){
+res += Number(process.argv[i]);
+}
+  console.log(res);
+  */
 // learnyounode select 2: MY FIRST I/O!
 /*
 var fs = require('fs');
-var theFile = fs.readFileSync('./threeLinesFile.txt');
+var theFile = fs.readFileSync(process.argv[2]);
 console.log(theFile.toString().split('\n').length - 1);
 */
-
 //learnyounode select 3: MY FIRST ASYNC I/O!
 /*
 var fs = require('fs');
@@ -130,4 +134,14 @@ var server = net.createServer(function(socket) {
     socket.end(now() + '\n');
 });
 server.listen(Number(process.argv[2], () => {console.log('server bound', server.address())}));
+*/
+
+ //## HTTP FILE SERVER (Exercise 11 of 13)
+ /*
+ var http = require('http');
+ var server = http.createServer(function (req, res){
+   //request handling logic
+   var fs = require('fs'); fs.createReadStream(process.argv[3]).pipe(res);
+ });
+ server.listen(Number(process.argv[2]), () => {console.log("Server listening on http://localhost:", process.argv[2] )});
 */
