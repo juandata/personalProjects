@@ -1,21 +1,22 @@
-//  learnyounode select 0: HELLO WORLD
-//console.log("HELLO WORLD");
-
-//learnyounode select 1: BABY STEPS
+//0:  learnyounode select 0: HELLO WORLD
+/*
+console.log("HELLO WORLD");
+*/
+//1: learnyounode select 1: BABY STEPS
 /*
 var res = 0;
 for(var i = 2;  i < process.argv.length; i ++ ){
 res += Number(process.argv[i]);
 }
   console.log(res);
-  */
-// learnyounode select 2: MY FIRST I/O!
+*/
+//2: learnyounode select 2: MY FIRST I/O!
 /*
 var fs = require('fs');
 var theFile = fs.readFileSync(process.argv[2]);
 console.log(theFile.toString().split('\n').length - 1);
 */
-//learnyounode select 3: MY FIRST ASYNC I/O!
+//3: learnyounode select 3: MY FIRST ASYNC I/O!
 /*
 var fs = require('fs');
 
@@ -23,8 +24,8 @@ var fs = require('fs');
     if(err) throw err;
     console.log(fileContents.toString().split('\n').length - 1);
   });
-*/
-//learnyounode select 4: FILTERED LS
+  */
+//4: learnyounode select 4: FILTERED LS
 /*
 const path = require('path');
 const theFilter = path.win32.basename( '.' + process.argv[3]);
@@ -39,9 +40,9 @@ var fs = require('fs');
         return ext;
       }
     });
-  });*/
-
-  //learnyounode select 5: MAKE IT MODULAR [COMPLETED]
+  });
+*/
+  //5: learnyounode select 5: MAKE IT MODULAR [COMPLETED]
 /*
   const path = require('path');
   var myFilterModule = require('./localModules/filterModule');
@@ -57,28 +58,27 @@ var fs = require('fs');
   });
 */
 
-//  learnyounode select 6: HTTP CLIENT
+//6: learnyounode select 6: HTTP CLIENT
 /*
 var http = require('http')
     http.get(process.argv[2], function (response) {
       response.setEncoding('utf8')
       response.on('data', console.log)
       response.on('error', console.error)
-    });*/
-
-    //HTTP COLLECT (Exercise 8 of 13)
-    /*
+    });
+*/
+//7: HTTP COLLECT (Exercise 8 of 13)
+/*
 var http = require('http'), BufferList = require('bl'), url = process.argv[2];
-
 http.get(url, function(response) {
   response.pipe(BufferList(function (err, data) {
     if(err) throw err;
     console.log(data.length);
     console.log(data.toString());
   }))
-});*/
-
- //JUGGLING ASYNC (Exercise 9 of 13)
+});
+*/
+//8: JUGGLING ASYNC (Exercise 9 of 13)
 /*
 var http = require('http'), BufferList = require('bl'), results = [], count = 0;
 
@@ -105,14 +105,12 @@ for (var i = 0; i < 3; i ++){
   httpGet(i);
 }
 */
-
-//## TIME SERVER (Exercise 10 of 13)
+//9:  TIME SERVER (Exercise 10 of 13)
 /*
 var net = require('net');
 function zeroFill(i) {
     return (i < 10 ? '0' : '') + i;
 }
-
 function now() {
     var d = new Date();
     return d.getFullYear() + '-'
@@ -121,7 +119,6 @@ function now() {
       + zeroFill(d.getHours()) + ':'
       + zeroFill(d.getMinutes());
 }
-
 var server = net.createServer(function(socket) {
     console.log("connected");
 
@@ -135,9 +132,8 @@ var server = net.createServer(function(socket) {
 });
 server.listen(Number(process.argv[2], () => {console.log('server bound', server.address())}));
 */
-
- //## HTTP FILE SERVER (Exercise 11 of 13)
- /*
+ //10: HTTP FILE SERVER (Exercise 11 of 13)
+/*
  var http = require('http');
  var server = http.createServer(function (req, res){
    //request handling logic
@@ -145,10 +141,8 @@ server.listen(Number(process.argv[2], () => {console.log('server bound', server.
  });
  server.listen(Number(process.argv[2]), () => {console.log("Server listening on http://localhost:", process.argv[2] )});
 */
+//11: learnyounode select 11: HTTP UPPERCASERER
 
-//learnyounode select 11: HTTP UPPERCASERER
-//create SERVER
-/*
 var http = require('http'), map = require('through2-map');
 var server = http.createServer(function (req, res){
 
@@ -163,89 +157,31 @@ var server = http.createServer(function (req, res){
 server.listen(Number(process.argv[2]), () => {
   console.log("Server listening on http://localhost:", process.argv[2]);
 });
-*/
 
-// 13: HTTP JSON API SERVER (Exercise 13 of 13)
 /*
+// HTTP JSON API SERVER (Exercise 13 of 13)
 var http = require('http'), url = require('url');
 var server = http.createServer(function (req, res){
   console.log("connected in the url:", req.url);
   if(req.method !== 'GET'){
     return res.end('Please send a GET method request.');
   };
-
+  var jsonData = {
+    name : "Juan", lastName : "Tabares"
+  };
   var fecha = new Date().toISOString();
   var urlObject = url.parse(req.url, true);
   var stringISO = urlObject.query.iso;
-  var regExpr = /\D+/g;
+  var regExpr = /T/i;
   var hour = stringISO.split(regExpr);
-  var time = new Date(hour[0],hour[1],hour[2],hour[3],hour[4]);
-  var jsonData = {
-    hour : hour[3],
-    minute : hour[4],
-    second: hour[5]
-  };
-  var jsonData0 = {
-    unixtime: time.getTime()
-  }
-  res.writeHead(200, {'Content-Type': 'application/json'});
-  if( urlObject.pathname === '/api/parsetime'){
-    res.write(JSON.stringify(jsonData));
-  }
-  else if (urlObject.pathname === '/api/unixtime') {
-    res.write(JSON.stringify(jsonData0));
-  }
+  console.log( hour);
+  res.writeHead(200, {'Content-Type': 'application/json'})
+  res.write(JSON.stringify(jsonData));
+  res.write(fecha);
+
 });
+
+
 server.listen(Number(process.argv[2]), () => {
   console.log("Server listening on http://localhost:", process.argv[2]);
-});
-*/
-// 13: HTTP JSON API SERVER (Exercise 13 of 13) OTHER SOLUTION
-
-var http = require('http');
-var url = require('url');
-
-http.createServer((req, res) => {
-  var urlObj = url.parse(req.url, true),
-      pathname = urlObj.pathname,
-      strtime = urlObj.query.iso,
-      result;
-
-  if (pathname === '/api/unixtime') {
-     result = getUnixTimestamp(strtime);
-  }
-  else if (pathname === '/api/parsetime') {
-    result = getTimeObj(strtime);
-  }
-
-  if (result) {
-    res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify(result));
-  }
-  else {
-    res.writeHead(404);
-    res.end();
-  }
-
-}).listen(process.argv[2]);
-
-
-var getUnixTimestamp = (strtime) => {
-  return {
-    unixtime: getTimestamp(strtime)
-  };
-}
-
-var getTimestamp = (strtime) => {
-  return Date.parse(strtime);
-}
-
-var getTimeObj = (strtime) => {
-  var date = new Date(getTimestamp(strtime));
-
-  return {
-    hour: date.getHours(),
-    minute: date.getMinutes(),
-    second: date.getSeconds()
-  };
-}
+});*/
