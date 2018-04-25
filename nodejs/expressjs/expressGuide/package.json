@@ -1,0 +1,14 @@
+{
+  "name": "expressguide",
+  "version": "1.0.0",
+  "description": "Express practices from getting started and guide in expressjs.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "JDA",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
