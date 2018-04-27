@@ -1,4 +1,4 @@
-/*
+/* Build Wep Apps with express.js
 // 1: Hello World -Create an Express.js app that outputs "Hello World!" when somebody goes to /home.
 //The port number will be provided to you by expressworks as the first argument of
 //the application, ie. process.argv[2].

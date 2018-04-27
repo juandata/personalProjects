@@ -142,7 +142,7 @@ server.listen(Number(process.argv[2], () => {console.log('server bound', server.
  server.listen(Number(process.argv[2]), () => {console.log("Server listening on http://localhost:", process.argv[2] )});
 */
 //11: learnyounode select 11: HTTP UPPERCASERER
-
+/*
 var http = require('http'), map = require('through2-map');
 var server = http.createServer(function (req, res){
 
@@ -157,7 +157,7 @@ var server = http.createServer(function (req, res){
 server.listen(Number(process.argv[2]), () => {
   console.log("Server listening on http://localhost:", process.argv[2]);
 });
-
+*/
 /*
 // HTTP JSON API SERVER (Exercise 13 of 13)
 var http = require('http'), url = require('url');
