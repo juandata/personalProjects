@@ -1,0 +1,2 @@
+1. Iniciar la base de datos en un directorio data en el mismo nivel donde se ejecuta el comando:
+mongod --port 27027 --dbpath=./data
