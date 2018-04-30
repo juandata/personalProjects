@@ -26,15 +26,46 @@ MongoClient.connect(url, function(err, db) {
   });
 });
 */
+
 // 2.1 Insert the elements of the array into the database collection:
-MongoClient.connect(url + 'learnyoumongo', function(err, db) {
+/*
+MongoClient.connect(url + 'learnyoumongo', function(err, database) {
      // db gives access to the database
-     var theDb = db.db('learnyoumongo');
-   jsonusers.users.map((el) => {
+     var theDb = database.db('learnyoumongo');
+     //iterate over the array of objects and insert them into the collection
+  jsonusers.users.map((el) => {
      theDb.collection('users').insertOne(el, function(err, res) {
        if (err) throw err;
        console.log("1 document inserted");
      });
    });
-     db.close();
+   //search for documents with age property greater than first option in cli
+    var theDoc = theDb.collection('users').find().toArray(function(err, documents){
+      console.log(documents[0].age);
+      documents.map((el)=>{
+        if(el.age > process.argv[2]){
+          console.log(el);
+        }
+      });
+
+    });
+      database.close();
    });
+   */
+
+   // 3 find
+var age = process.argv[2]
+MongoClient.connect(url, function(err, database) {
+  if (err) throw err;
+  var theDb = database.db('learnyoumongo');
+  var parrots = theDb.collection('parrots');
+  parrots.find({
+    age: {
+      $gt: +age
+    }
+  }).toArray(function(err, docs) {
+    if (err) throw err
+    console.log(docs)
+    database.close()
+  })
+})
