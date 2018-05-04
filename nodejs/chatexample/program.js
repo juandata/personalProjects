@@ -224,6 +224,7 @@ http.createServer((req, res) => {
   }
   else {
     res.writeHead(404);
+    console.log("res end");
     res.end();
   }
 

@@ -9,11 +9,12 @@
    });
    app.listen(process.argv[2]);
 */
-/*
+
 // 2: Static -Apply static middleware to serve index.html file without any routes.
 //Your solution must listen on the port number supplied by process.argv[2].
 //The index.html file is provided and usable via the path supplied by
-process.argv[3]. However, you can use your own file with this content:
+//process.argv[3]. However, you can use your own file with this content:
+  /*
    var path = require('path')
    var express = require('express');
    var app = express();
@@ -77,7 +78,7 @@ app.put('/message/:id', function(req, res){
 app.listen(process.argv[2])
 */
 // 7:  WHAT'S IN QUERY -Write a route that extracts data from query string in the GET '/search' URL
-//route, e.g. ?results=recent&include_tabs=true and then outputs it back tothe user in JSON format.
+//route, e.g. ?results=recent&include_tabs=true and then outputs it back to the user in JSON format.
 /*
 var express = require('express');
 var app = express();
